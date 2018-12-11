@@ -1,0 +1,144 @@
+.products-collection{
+  display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  	text-align: center;
+}
+.products-collection li{
+  width: 225px;
+    margin-bottom: 15px;
+    display: inline-block;
+    flex-direction: column;
+  margin-right: calc((100% - 901px) / 3);}
+  
+.product-list-wrapper .shelf-header{
+  border: none;
+  margin: 30px 0;
+}
+
+.product-list-wrapper .search-shelf-wrapper {
+  max-width: 100% !important;
+}
+
+.product-list-wrapper .shelf-content .main {
+  margin: auto;
+}
+.banner-ac-toys{
+  margin: 0 0 30px 0;
+  overflow: hidden;
+}
+#banner-with-url-toys .banner-ac-toys{
+  margin: 30px 0 !important;
+}
+
+.toy-brand{
+  display: inline-block;
+}
+.landing-jugueteria .product-list-wrapper .search-shelf-wrapper .search-list-filters-wrapper {
+    margin-top: 8px;
+}
+.search-filter img{
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 10px;
+  height: 20px;
+}
+.bx-controls-direction{
+  display: none;
+}
+.bx-controls{
+  margin-top: 10px;
+  
+}
+.toy-brand {
+  cursor: pointer;
+}
+.toy-brand:hover{
+  -webkit-filter: opacity(.5);
+    filter: opacity(.5);
+}
+.adaptive-image{
+  cursor: pointer;
+}
+#instructions-to-buy .v-center {
+    display: block;
+    vertical-align: baseline;
+    text-align: center;
+}
+#instructions-to-buy img{
+  height: 90vh;
+  margin: 20px auto;
+}
+#instructions-to-buy .overlay__close:hover{
+    background: #1FA02E;
+    color: white;
+}
+
+@media screen and (min-width: 1440px){
+  .search-list-filters{
+    width: 1340px;
+  }
+}
+@media screen and (min-width: 761px){
+  .product-list-wrapper .shelf-content .product-shelf>ul>li{
+	width: 230px;
+  	margin: 10px !important;
+  }
+  
+  #instructions-to-buy .overlay__close{
+    position: absolute;
+    right: 20%;
+    top: 0%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 10px;
+  }
+  
+  
+}
+
+@media screen and (min-width: 761px) and (max-width: 1024px){
+  .product-list-wrapper .shelf-content .main {
+      width: calc(100% - 180px) !important;
+  }
+}
+
+@media screen and (max-width: 760px){
+  .container-brand-toys{
+    margin: 20px 0;
+  }
+  
+  .toys-brand .slick-slide img {
+    width: 110px;
+  }
+  .banner-ac-toys img{
+        position: relative ;
+    left: initial ;
+    right: initial ;
+    top: initial ;
+    margin: 0 auto ;
+    width: 100% ;
+  }
+  .banner-ac-toys .adaptive-image{
+    height: auto ;
+    display: block ;
+    width: 100% ;
+  }
+  
+  #instructions-to-buy .overlay__close{
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    background: white;
+    padding: 10px;
+  }
+
+}
+@media screen and (min-width: 1024px) and (max-width: 1550px){
+  .product-list-wrapper .shelf-content .product-shelf>ul{
+    margin-left: 100px;
+  } 
+}

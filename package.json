@@ -1,0 +1,38 @@
+{
+  "name": "landing-descuentos-mercado",
+  "version": "1.0.0",
+  "description": "Descuentos en mercado - Tiendasjumbo.co",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cencosud-ecommerce/landing-descuentos-mercado.git"
+  },
+  "keywords": [
+    "mercado",
+    "jumbo",
+    "tiendasjumbo.co"
+  ],
+  "author": "CA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cencosud-ecommerce/landing-descuentos-mercado/issues"
+  },
+  "homepage": "https://github.com/cencosud-ecommerce/landing-descuentos-mercado#readme",
+  "devDependencies": {
+    "node-sass": "^4.10.0",
+    "webpack": "^4.27.0",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "css-loader": "^1.0.1",
+    "file-loader": "^2.0.0",
+    "mini-css-extract-plugin": "^0.4.5",
+    "path": "^0.12.7",
+    "sass-loader": "^7.1.0",
+    "url-loader": "^1.1.2"
+  }
+}

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+    <vtex:contentPlaceHolder id="metatags" />
+	<vtex:template id="metas" />
+	<link rel="stylesheet" type="text/css" href="/files/landing-jugueteria.css" />
+</head>
+
+<body id="jugueteria" class="department">
+	<!-- GLOBAL TEMPLATES -->
+	<!-- Overlays -->
+    <vtex:template id="overlay-delivery-window" />
+    <vtex:template id="overlay-store-selector" />
+    <vtex:template id="overlay-product-quickview" />
+    <vtex:template id="overlay-added-to-cart" />
+    <vtex:template id="overlay-add-shop-list" />
+    <vtex:template id="overlay-added-to-lists" />
+    <vtex:template id="overlay-store" />
+    <vtex:template id="overlay-successfull-config" />
+    <vtex:template id="overlay-delivery-city" />
+
+
+    <!-- /Overlays -->
+
+    <div id="highlight-background"></div>
+
+    <!-- Preload Screen -->
+    <vtex:template id="preload-screen" />
+    <!-- Preload Screen -->
+
+        <!-- /GLOBAL TEMPLATES -->
+    <vtex.cmc:HightLight/>
+        
+	<!-- HANDLEBAR TEMPLATES -->
+
+	<!-- Category filters template -->
+	<script id="category-filter-template" type="text/x-handlebars-template">
+		{{#if isMobile}}
+			<div class="filters-mobile__titles">
+			{{#each categories}}
+			<div class="filters-mobile__title" data-group="{{sanitize Name}}">
+				<span class="text">{{Name}}</span> <span class="font-icn plus"></span>
+			</div>
+			{{/each}}
+			</div>
+			<div class="filters-mobile__groups">
+				{{#each categories}}
+					{{#gt Children.length 0}}
+					<fieldset class="open {{sanitize Name}} subcategorias filters-mobile__group">
+					    <h5>{{Name}}</h5>
+					    <div>
+					    	{{#each Children}}
+						    	<a href="{{Link}}">{{Name}}</a>
+					    	{{/each}}
+					    </div>
+					 </fieldset>
+					 {{/gt}}
+				 {{/each}}
+			</div>
+		{{else}}
+			{{#each categories}}
+				<fieldset>
+					<h5>{{Name}}</h5>
+					<ul>
+					{{#each Children}}
+						<li>
+							<a href="{{Link}}">{{Name}}</a>
+						</li>
+					{{/each}}
+					</ul>
+				</fieldset>
+			{{/each}}
+		{{/if}}
+	</script>
+	<!-- /Category filters template -->
+
+	<!-- Overlay Filters Mobile -->
+	<vtex:template id="overlay-filters-mobile" />
+
+	<!-- /HANDLEBAR TEMPLATES -->
+
+	<!-- Header -->
+	<vtex:template id="header" />
+	<!-- /Header -->
+
+	<!-- Navigation -->
+	<vtex:template id="navigation" />
+	<!-- /Navigation -->
+
+	<!-- Header compare -->
+	<vtex:template id="header-compare" />
+	<!-- Header compare -->
+
+	<!-- Content -->
+	<div class="wrapper bread-crumb">
+		<div class="center">
+			<div class="bread-crumb">
+				<ul>
+					<li>
+						<a href="/"></a>
+					</li>
+					<li>
+						Resultados de Búsqueda
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper search-results-wrapper product-list-wrapper clear-fix">
+		<div class="center">
+			<div class="search-shelf-wrapper">
+    			<!-- Chaordic TOP -->
+    		    <div chaordic="top"></div>
+    		    <!--/ Chaordic TOP -->
+    		    
+    		    <div id="banner-with-popup-instructions" class="container-banner-toys">
+        		    <div class="banner-ac-toys">
+        		        <div class="swiper-wrapper">
+        		            <div class="adaptive-image" data-desktop="/arquivos/banner_main_landing_jugueteriav2.jpg" data-mobile="/arquivos/banner_m_main_landing_jugueteriav2.jpg"></div>
+        		        </div>
+        		    </div>    
+    		    </div>
+    		    
+    		    <div class="container-brand-toys">
+    		        <ul class="toys-brand">
+    		            <li id="btn-jxb-19" collection="596" class="toy-brand">
+                            <img src="/arquivos/Nerf.png" alt="Marca de juguetes Nerf" />
+                        </li>
+                        <li id="btn-jxb-11" collection="1236" class="toy-brand">
+                            <img src="/arquivos/HOTWHEELS.png" alt="Marca de juguetes HOTWHEELS" />
+                        </li>
+                        <li id="btn-jxb-08" collection="1281" class="toy-brand">
+                            <img src="/arquivos/FURREALFRIENDS.png" alt="Marca de juguetes FURREALFRIENDS" />
+                        </li>
+                        <li id="btn-jxb-01" collection="1333" class="toy-brand">
+                            <img src="/arquivos/AVENGERS.png" alt="Marca de juguetes AVENGERS" />
+                        </li>
+                        <li id="btn-jxb-04" collection="437" class="toy-brand">
+                            <img src="/arquivos/BEN10.png" alt="Marca de juguetes BEN10" />
+                        </li>
+                        <li id="btn-jxb-07" collection="993" class="toy-brand">
+                            <img src="/arquivos/FISHER-PRICE.png" alt="Marca de juguetes FISHER-PRICE" />
+                        </li>
+                        <li id="btn-jxb-09" collection="994" class="toy-brand">
+                            <img src="/arquivos/HAPPYPLACES.png" alt="Marca de juguetes HAPPYPLACES" />
+                        </li>
+                        <li id="btn-jxb-12" collection="1178" class="toy-brand">
+                            <img src="/arquivos/JUSTICELEAGE.png" alt="Marca de juguetes JUSTICELEAGE" />
+                        </li>
+                        <li id="btn-jxb-22" collection="840" class="toy-brand">
+                            <img src="/arquivos/PJMASKS.png" alt="Marca de juguetes PJMASKS" />
+                        </li>
+                        <li id="btn-jxb-25" collection="514" class="toy-brand">
+                            <img src="/arquivos/SHOPKINS.png" alt="Marca de juguetes SHOPKINS" />
+                        </li>
+                        <li id="btn-jxb-23" collection="1368" class="toy-brand">
+                            <img src="/arquivos/PLAY-DOH.png" alt="Marca de juguetes PLAY-DOH" />
+                        </li>
+                        <li id="btn-jxb-24" collection="1293" class="toy-brand">
+                            <img src="/arquivos/POLLYPOCKET.png" alt="Marca de juguetes POLLYPOCKET" />
+                        </li>
+                        <li id="btn-jxb-13" collection="1190" class="toy-brand">
+                            <img src="/arquivos/LEGO.png" alt="Marca de juguetes LEGO" />
+                        </li>
+                        <li id="btn-jxb-20" collection="1375" class="toy-brand">
+                            <img src="/arquivos/NORMA.png" alt="Marca de juguetes NORMA" />
+                        </li>
+                        <li id="btn-jxb-21" collection="932" class="toy-brand">
+                            <img src="/arquivos/PAWPATROL.png" alt="Marca de juguetes PAWPATROL" />
+                        </li>
+                        <li id="btn-jxb-03" collection="547" class="toy-brand">
+                            <img src="/arquivos/BARBIE.png" alt="Marca de juguetes BARBIE" />
+                        </li>
+    		            
+    		        </ul>
+    		    </div>
+    		    
+    		    
+    		    <!--<div id="banner-with-url-toys" class="container-banner-toys">-->
+        		<!--    <div class="banner-ac-toys">-->
+        		<!--        <div class="swiper-wrapper">-->
+        		<!--            <a href="/busca?fq=H:1280&amp;O=OrderByPriceDESC" class="adaptive-image" data-desktop="/arquivos/Bnr-Ac-HASTA-50DTO-JUGUETES-9Dic.jpg" data-mobile="/arquivos/Bnr-Ctrl-Mobile-HASTA-50DTO-JUGUETES-9Dic.jpg"></a>-->
+        		<!--        </div>-->
+        		<!--    </div>    -->
+    		    <!--</div>-->
+
+    
+                <div class="shelf-header clear-fix">
+                    <div class="search-list-filters-wrapper">
+    					<div class="search-list-filters">
+    					    <button id="btn-jxc-01" collection="698" type="button" class="search-filter active"><img src="/arquivos/armables.png" alt="Bloques y armables" /><span class="text">Bloques y armables</span></button>
+    					    <button id="btn-jxc-02" collection="1300" type="button" class="search-filter"><img src="/arquivos/CarrosYPistas.png" alt="Carros y pistas" /><span class="text">Carros y pistas</span></button>
+    					    <button id="btn-jxc-03" collection="1301" type="button" class="search-filter"><img src="/arquivos/Ludicos.png" alt="Lúdicos" /><span class="text">Lúdicos</span></button>
+    					    <button id="btn-jxc-13" collection="1433" type="button" class="search-filter"><img src="/arquivos/videojuegos.png" alt="Videojuegos" /><span class="text">Videojuegos</span></button>
+    					    <button id="btn-jxc-04" collection="677" type="button" class="search-filter"><img src="/arquivos/FigurasYpersonajes.png" alt="Figuras y personajes" /><span class="text">Figuras y personajes</span></button>
+    					    <button id="btn-jxc-05" collection="751" type="button" class="search-filter"><img src="/arquivos/JuegosDeImitacion.png" alt="Juegos de imitación" /><span class="text">Juegos de imitación</span></button>
+    					    <button id="btn-jxc-06" collection="1177" type="button" class="search-filter"><img src="/arquivos/JuegosDeMesa.png" alt="Juegos de mesa" /><span class="text">Juegos de mesa</span></button>
+    					    <button id="btn-jxc-07" collection="1286" type="button" class="search-filter"><img src="/arquivos/AControlRemoto.png" alt="Juegos a control remoto" /><span class="text">A control remoto</span></button>
+    					    <button id="btn-jxc-08" collection="1295" type="button" class="search-filter"><img src="/arquivos/LanzadoresYPistolas.png" alt="Lanzadores y pistolas" /><span class="text">Lanzadores y pistolas</span></button>
+    					    <button id="btn-jxc-09" collection="1371" type="button" class="search-filter"><img src="/arquivos/MuñecasYAccesorios.png" lat="Muñecas" /><span class="text">Muñecas</span></button>
+    					    <button id="btn-jxc-10" collection="1108" type="button" class="search-filter"><img src="/arquivos/Musicales.png" alt="Juegos musicales" /><span class="text">Musicales</span></button>
+    					    <button id="btn-jxc-11" collection="1228" type="button" class="search-filter"><img src="/arquivos/Peluches.png" alt="Peluches" /><span class="text">Peluches</span></button>
+    					    <button id="btn-jxc-12" collection="773" type="button" class="search-filter"><img src="/arquivos/Montables.png" alt="Montables" /><span class="text">Montables</span></button>
+    					</div>
+    					<div class="controls-direction">
+    						<button type="button" class="control prev">
+    							<div class="font-icn arrow-left-products"></div>
+    						</button>
+    						<button type="button" class="control next">
+    							<div class="font-icn arrow-right-products"></div>
+    						</button>
+    					</div>
+    				</div>
+                </div>
+                
+                <!-- Chaordic MIDDLE -->
+    			<div chaordic="middle"></div>
+    			<!--/ Chaordic MIDDLE -->
+    
+                
+    			<div class="shelf-content">
+    				<div class="loader"> <svg class="spinner-loader" width="60px" height="60px" viewBox="0 0 80 80"><path class="spinner-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"></path><path id="spinner-loader-circle" class="preload-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"></path></svg> </div>
+    				<div class="main">
+    					<div class="vitrine">
+    						<div class="product-shelf">
+    							<ul></ul>
+    						</div>
+    					</div>
+    				</div>
+    				<div class="loader_more">
+    					<div class="loader"> <svg class="spinner-loader" width="60px" height="60px" viewBox="0 0 80 80"><path class="spinner-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"></path><path id="spinner-loader-circle" class="preload-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"></path></svg> </div>
+    				</div>
+    
+    			</div>
+    			<!-- Chaordic BOTTOM -->
+    			<div chaordic="bottom"></div>
+    			<!--/ Chaordic BOTTOM -->
+			</div>
+		</div>
+	</div>
+	<!-- /Content -->
+
+
+    <div id="instructions-to-buy" class="overlay-wrapper" style="display: none;">
+      <div class="v-center">
+        <div class="h-center">
+          <div class="overlay">
+            <div class="overlay-content">
+              <div class="action-wrapper">
+              
+                <img src="/arquivos/popup_landing_jugueteria.jpg" alt="popup landing juguetería" />
+                <div class="actions clear-fix">
+                  
+                  <button type="button" class="btn primary-border overlay__close pull-left">
+                    <span class="font-icn cross"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+	<!-- Footer -->
+	<vtex:template id="footer" />
+	<!-- /Footer -->
+
+	<script src="/files/fizzmod.compare.js" charset="utf-8"></script>
+	<!--<script src="/files/list.js" charset="utf-8"></script>-->
+	<script src="/arquivos/clicProduct.js" charset="utf-8"></script>
+	<script src="/files/offersCollection.js" charset="utf-8"></script>
+	<script src="/files/landing-jugueteria.js"></script>
+</body>
+
+</html>
