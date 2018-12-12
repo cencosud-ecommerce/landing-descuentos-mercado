@@ -3,13 +3,13 @@ require("./index.css");
 $(function() {
   // Counter for load more products - Start with 20 by is the default render items
   var cont = 20;
-  var numberCollection = 698;
+  var numberCollection = parseInt($(".search-filter:first-child").attr("collection"));
 
-  getCategoriesFilters(`?map=c&fq=H:${797}`)
+  getCategoriesFilters(`?map=c&fq=H:${numberCollection}`)
     .done(filters => {
       if(filters.CategoriesTrees.length > 0){
         //let collectionId = window.location.search.split(":")[1].split("&O")[0];
-        let collectionId = 797;
+        let collectionId = numberCollection;
         let category = filters.CategoriesTrees;
         for(let i=0;i<filters.CategoriesTrees.length;i++){
           let childrenCat = category[i].Children; 
@@ -24,7 +24,7 @@ $(function() {
   var loader = $(elem.shelfLoader);
   loader.fadeIn(250);
 
-  getCollectionByNumber(797, 20);
+  getCollectionByNumber(numberCollection, 20);
 
   $(document).on("click", elem.searchListFiltersSlideControls, function() {
     let t = $(this);
@@ -66,9 +66,9 @@ $(function() {
     $(".product-shelf").empty();
     let link = $element.attr("link");
     if($element[0].id == "view-all-products"){
-      getCollectionByNumber(797, 20);
+      getCollectionByNumber(numberCollection, 20);
     }else{
-      getFilteredProducts(link,797);
+      getFilteredProducts(link,numberCollection);
     }
     
   });
@@ -209,7 +209,7 @@ $(function() {
     ) {
       cont += 5;
       loader.fadeIn(250);
-      getCollectionByNumber(797, cont);
+      getCollectionByNumber(numberCollection, cont);
     }
   });
 });
