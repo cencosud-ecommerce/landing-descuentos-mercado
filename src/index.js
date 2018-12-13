@@ -1,9 +1,11 @@
 require("./index.css");
 
-$(function() {
+(function ($, Fizzmod, window, undefined) {
+
   // Counter for load more products - Start with 20 by is the default render items
-  var cont = 20;
-  var numberCollection = parseInt($(".search-filter:first-child").attr("collection"));
+  let numberCollection = parseInt($(".search-filter:first-child").attr("collection"));
+  let isRequesting = false;
+  let cont = 20;
 
   getCategoriesFilters(`?map=c&fq=H:${numberCollection}`)
     .done(filters => {
@@ -79,6 +81,7 @@ $(function() {
    * @param {Number} quantity - Number of how many products should be rendered
    */
   function getCollectionByNumber(number, quantity) {
+    isRequesting = true;
     Aurora.getProductShelf(`fq=H:${number}`, 1, quantity, 20)
       .done(res => {
         if (
@@ -100,6 +103,7 @@ $(function() {
               flagDiscount[i].style.display = "flex";
             }
           }
+          isRequesting = false;
         }
       })
       .fail(er => console.log("error"));
@@ -203,13 +207,21 @@ $(function() {
 }
 
   $(window).scroll(function() {
-    if (
-      $(window).scrollTop() + $(window).height() >
-      $(document).height() - 1000 && $("#view-all-products").hasClass("active")
-    ) {
+    if ( $(window).scrollTop() + $(window).height() > $(document).height() - 500 && $("#view-all-products").hasClass("active") && !isRequesting) {
+      // Add 5 more products
       cont += 5;
+
+      // Activate loader when request are in course
       loader.fadeIn(250);
+
+      // Get the products
       getCollectionByNumber(numberCollection, cont);
+
+      // Go 1 px before to prevent do the request again
+      $(window).scrollTop($(window).scrollTop() + 1);
     }
   });
-});
+
+
+})(jQuery, Fizzmod, window);
+
