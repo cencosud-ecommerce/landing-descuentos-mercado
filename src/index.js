@@ -6,7 +6,6 @@ require("./index.css");
         $(".search-filter:first-child").attr("collection")
     );
     let isRequesting = false;
-    let cont = 20;
     let currentPage = 1;
     let activeRequest = null;
     let loader = $(elem.shelfLoader);
@@ -34,7 +33,7 @@ require("./index.css");
         })
         .fail(e => console.log("Hubo un error", e));
 
-    getCollectionByNumber(numberCollection, 1, 20);
+    getCollectionByNumber(numberCollection, 1, 15);
 
     $(document).on("click", elem.searchListFiltersSlideControls, function() {
         let t = $(this);
@@ -66,7 +65,6 @@ require("./index.css");
     // Handle events for buttons
     $(".shelf-header .search-list-filters").on("click", function(e) {
         var $element = $(e.target).closest("button");
-        cont = 20;
         numberCollection = parseInt($element.attr("collection"));
         $element
             .addClass("active")
@@ -94,11 +92,14 @@ require("./index.css");
             activeRequest.abort();
         }
 
-		console.log(activeRequest)
-        activeRequest = Aurora.getProductShelf(`fq=H:${number}`,page,18,18)
+        activeRequest = Aurora.getProductShelf(`fq=H:${number}`,page,quantity,18)
             .done(res => {
                 if ( res != "" && !$.isEmptyObject(res) &&typeof res.activeElement == "undefined" ) {
-                    $(".product-shelf ul").append(res);
+
+                    // Find necessary html (product list)
+                    let products = $(res).find("> ul > li");
+                    // Append it into the ul tag
+					$(elem.productShelf).find("ul:first").append(products);
 
                     loader.fadeOut(250);
                     loader_more.fadeOut(250);
@@ -118,12 +119,16 @@ require("./index.css");
                     
                 }
             })
-            .fail(er => {
-				console.log("Error" , er);
-				$(".product-shelf").append(
-					"<p>Hay un problema cargando los productos, recarga la página o vuelve a intentarlo más tarde</p>"
-				);
-			});
+            .fail(error => {
+                console.clear()
+                console.error("Error loading more products",error);
+                $(".product-shelf ul").empty();
+				$(".product-shelf").append("<p>Hay un problema cargando los productos, recarga la página o vuelve a intentarlo más tarde</p>");
+                setTimeout(() => {
+                    $(".product-shelf ul").empty();
+                    getCollectionByNumber(number, page, quantity)
+                }, 3000);
+            });
     }
 
     /**
@@ -237,25 +242,18 @@ require("./index.css");
     }
 
     $(window).scroll(function() {
-
-		if($(this).scrollTop() + window.innerHeight > $(elem.shelfContent).offset().top + $(elem.shelfContent).height() ){
+		if($(this).scrollTop() + window.innerHeight > $(elem.shelfContent).offset().top + $(elem.shelfContent).height() && $("#view-all-products").hasClass("active") && !isRequesting ){
 
 			setTimeout(() => {
-				currentPage += 1;
-			}, 500);
-            // Add 5 more products
-            cont += 5;
-
+                    currentPage = currentPage + 1;
+            }, 500);
+            
             // Activate loader when request are in course
             loader.fadeIn(250);
 			loader_more.fadeIn(250);
 			
-			console.log("page",currentPage)
+            getCollectionByNumber(numberCollection, currentPage, 15);
             // Get the products
-            getCollectionByNumber(numberCollection, currentPage, 10);
-
-            // Go 1 px before to prevent do the request again
-            $(window).scrollTop($(window).scrollTop() - 100);
         }
     });
 })(jQuery, Fizzmod, window);
