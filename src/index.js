@@ -33,7 +33,7 @@ require("./index.css");
         })
         .fail(e => console.log("Hubo un error", e));
 
-    getCollectionByNumber(numberCollection, 1, 15);
+    getCollectionByNumber(numberCollection, currentPage, 15);
 
     $(document).on("click", elem.searchListFiltersSlideControls, function() {
         let t = $(this);
@@ -62,8 +62,10 @@ require("./index.css");
         });
     }
 
+    
     // Handle events for buttons
     $(".shelf-header .search-list-filters").on("click", function(e) {
+        currentPage = 1;
         var $element = $(e.target).closest("button");
         numberCollection = parseInt($element.attr("collection"));
         $element
@@ -71,8 +73,10 @@ require("./index.css");
             .siblings()
             .removeClass("active");
         loader.fadeIn(250);
-        $(".product-shelf").empty();
+        $(".product-shelf ul").empty();
         let link = $element.attr("link");
+
+        // Get all the products in the first button, the others is to filter
         if ($element[0].id == "view-all-products") {
             getCollectionByNumber(numberCollection, currentPage, 20);
         } else {
@@ -99,8 +103,8 @@ require("./index.css");
                     // Find necessary html (product list)
                     let products = $(res).find("> ul > li");
                     // Append it into the ul tag
-					$(elem.productShelf).find("ul:first").append(products);
-
+                    $(elem.productShelf).find("ul:first").append(products);
+                    
                     loader.fadeOut(250);
                     loader_more.fadeOut(250);
 
@@ -162,7 +166,7 @@ require("./index.css");
             .fail(() => {
                 if (retries < 3) {
                     retries++;
-                    self.getCategoriesFilters(params, def, retries);
+                    getCategoriesFilters(params, def, retries);
                 } else {
                     def.reject();
                 }
@@ -210,7 +214,7 @@ require("./index.css");
                     // Close loader spinner
                     loader.fadeOut(250);
                 } catch (e) {
-                    $(".product-shelf").html(
+                    $(".product-shelf ul").html(
                         "<p>Hay un problema cargando los productos, vuelve a intentarlo más tarde</p>"
                     );
                     setTimeout(() => {
